@@ -10,17 +10,12 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 public class QuerySettings {
-    private String connectionName;
     private String query;
     private int responseTimeout;
     private String resultFile;
     private String databaseDriverJar;
 
     private JSONObject connectionCredentials;
-
-    private void setConnectionName(String connectionName) {
-        this.connectionName = connectionName;
-    }
 
     private void setQuery(String query) {
         this.query = query;
@@ -45,16 +40,11 @@ public class QuerySettings {
         JSONObject settingContent = new JSONObject(new String(Files.readAllBytes(querySettingPath),
                 StandardCharsets.UTF_8));
 
-        this.setConnectionName(settingContent.getString("connectionName"));
         this.setQuery(settingContent.getString("query"));
         this.setResponseTimeout(settingContent.getInt("responseTimeout"));
         this.setResultFile(settingContent.getString("resultFilePath"));
         this.setDatabaseDriverJar(settingContent.getString("jarPath"));
         this.setConnectionCredentials(settingContent.getJSONObject("connectionCredentials"));
-    }
-
-    public String getConnectionName() {
-        return connectionName;
     }
 
     public String getQuery() {
@@ -78,11 +68,11 @@ public class QuerySettings {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         QuerySettings that = (QuerySettings) o;
-        return connectionName.equals(that.connectionName) && query.equals(that.query) && resultFile.equals(that.resultFile) && databaseDriverJar.equals(that.databaseDriverJar);
+        return query.equals(that.query) && resultFile.equals(that.resultFile) && databaseDriverJar.equals(that.databaseDriverJar);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(connectionName, query, resultFile, databaseDriverJar);
+        return Objects.hash(query, resultFile, databaseDriverJar);
     }
 }

@@ -31,16 +31,12 @@ public class QueryExecutor {
 
         try {
             retrievedData = databaseCaller.executeSQL(databaseConnection);
-        }catch (SQLException e){
-            databaseConnection.close();
+            saveQueryResult(retrievedData, querySetting.getResultFilePath(), csvSeparator);
+        }catch (SQLException e ){
             saveExceptionMessage(e.getMessage());
             throw new SQLException(e);
-        }
-
-        try{
-            saveQueryResult(retrievedData, querySetting.getResultFilePath(), csvSeparator);
-        }catch (Exception e){
-            throw new Exception(e);
+        } finally{
+            databaseConnection.close();
         }
     }
 
