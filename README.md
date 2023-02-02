@@ -23,7 +23,7 @@ First it's necessary to create a json file with the following format:
 In order to run the query, use: 
 
 ```bash
-java -jar <oathToJson>
+java -jar <path/To/Json>
 ```
 
 Once the query is finished there will be a file in the `resultFilePath` specifed path, that can either be a `.csv` if the query was successefuly executed or a `.txt` with the Exception if anything goes wrong.
