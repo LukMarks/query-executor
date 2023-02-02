@@ -10,7 +10,7 @@ First it's necessary to create a json file with the following format:
 {
  "query": "Select MyData from table",
  "responseTimeout": 15,
- "resultFilePath": "/path/to/WhereResultWillBe",
+ "resultFilePath": "/path/to/WhereResultWillBeSaved",
  "jarPath": "path/to/dabaseDriver.jar",
  "connectionCredentials": {
      "driver": "driver.main.class",
@@ -20,6 +20,8 @@ First it's necessary to create a json file with the following format:
    }
 }
 ```
+> NOTE: The resultFilePath must be a nome with no extension, this will by added by the query-executor depending on query result.
+
 In order to run the query, use: 
 
 ```bash
