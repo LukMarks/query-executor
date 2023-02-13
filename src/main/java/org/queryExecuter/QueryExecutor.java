@@ -17,6 +17,8 @@ public class QueryExecutor {
 
     private static QuerySettings querySetting;
 
+    private static Connection databaseConnection;
+
     public static void main(String[] queryFilePath) throws Throwable{
 
         Path querySettingFile = Paths.get(queryFilePath[0]);
@@ -26,10 +28,9 @@ public class QueryExecutor {
         ConnectionCredential connectionCredential = new ConnectionCredential(querySetting.getConnectionCredentials());
         connectionCredential.loadCredential();
 
-        QueryCaller databaseCaller = new QueryCaller(connectionCredential, querySetting);
-        Connection databaseConnection = databaseCaller.openConnection();
-
         try {
+            QueryCaller databaseCaller = new QueryCaller(connectionCredential, querySetting);
+            databaseConnection = databaseCaller.openConnection();
             retrievedData = databaseCaller.executeSQL(databaseConnection);
             saveQueryResult(retrievedData, querySetting.getResultFilePath(), csvSeparator);
         }catch (SQLException e ){
