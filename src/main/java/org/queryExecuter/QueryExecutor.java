@@ -68,5 +68,9 @@ public class QueryExecutor {
         errorMessageFile.close();
     }
 
+    public static void saveMetadata(ResultSet queryResult, String metadaFile){
+
+    }
+
 
 }
