@@ -10,17 +10,17 @@ First it's necessary to create a json file with the following format:
 {
  "query": "Select MyData from table",
  "responseTimeout": 15,
- "resultFilePath": "/path/to/WhereResultWillBeSaved",
+ "resultFilePath": "/path/to/Where/Result/Will/Be/Saved",
  "jarPath": "path/to/dabaseDriver.jar",
  "connectionCredentials": {
      "driver": "driver.main.class",
      "connString": "jdbc:https://my-db-connstring",
      "user": "userName",
-     "pass": "passwordWithBase64Encode",
+     "pass": "passwordWithBase64Encode"
    }
 }
 ```
-> NOTE: The resultFilePath must be a nome with no extension, this will by added by the query-executor depending on query result.
+> NOTE: The resultFilePath must be a name with no extension, this will by added by the query-executor depending on query result.
 
 In order to run the query, use: 
 
